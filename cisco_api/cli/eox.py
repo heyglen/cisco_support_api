@@ -42,3 +42,18 @@ def by_product(ctx, product, verbose):
         item.verbose = verbose
         logger.info(item)
 
+@eox_cli.command()
+@click.pass_context
+@click.argument('serial')
+@click.option('-v', '--verbose', is_flag=True, default=False)
+@debug_option
+def by_serial(ctx, serial, verbose):
+    """List EOX by serial"""
+    items = ctx.obj.eox.by_serial(serial)
+    if not items:
+        logger.info(messages.no_results)
+    now = datetime.datetime.now()
+    for item in sorted(items, key=lambda x: x.last_day_of_support or now):
+        item.verbose = verbose
+        logger.info(item)
+

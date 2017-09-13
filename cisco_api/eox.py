@@ -103,6 +103,12 @@ class Eox(BaseApi):
             url = f'{url}'
             yield url
 
+    def _serial_urls(self, serial):
+        for page_index_url in self._url_page_index('serial'):
+            url = f'{page_index_url}/{serial}'
+            url = f'{url}'
+            yield url
+
     def _get_records(self, response):
         for record in EoxFactory.build(response):
             yield record
@@ -131,6 +137,21 @@ class Eox(BaseApi):
         for product_url in self._product_urls(product_id):
             responses = self._get(
                 product_url,
+                # params={
+                #     'eoxAttrib': EOX_TYPES.sale
+                # },
+            )
+
+            for eox in self._get_records(responses):
+                yield eox
+
+            if not self._new_page(responses):
+                break
+
+    def by_serial(self, serial):
+        for serial_url in self._serial_urls(product_id):
+            responses = self._get(
+                serial_url,
                 # params={
                 #     'eoxAttrib': EOX_TYPES.sale
                 # },
