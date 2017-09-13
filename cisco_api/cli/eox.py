@@ -24,6 +24,21 @@ def list_(ctx, verbose):
         logger.info(messages.no_results)
     now = datetime.datetime.now()
     for item in sorted(items, key=lambda x: x.last_day_of_support or now):
-        # item.verbose = verbose
+        item.verbose = verbose
+        logger.info(item)
+
+@eox_cli.command()
+@click.pass_context
+@click.argument('product')
+@click.option('-v', '--verbose', is_flag=True, default=False)
+@debug_option
+def by_product(ctx, product, verbose):
+    """List EOX by product id"""
+    items = ctx.obj.eox.by_product(product)
+    if not items:
+        logger.info(messages.no_results)
+    now = datetime.datetime.now()
+    for item in sorted(items, key=lambda x: x.last_day_of_support or now):
+        item.verbose = verbose
         logger.info(item)
 

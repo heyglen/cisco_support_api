@@ -3,8 +3,13 @@ import logging
 import datetime
 
 from cisco_api.records.eox import EoxRecord
+from cisco_api.factories.eox_error import EoxErrorFactory
+from cisco_api.factories.eox_migration import EoxMigrationFactory
+
 
 logger = logging.getLogger(__name__)
+
+deafult_clean = lambda x: x.strip() if isinstance(x, str) else None
 
 
 attribute_map = {
@@ -41,6 +46,7 @@ def parse_date_record(record):
 
 
 attribute_type_map = {
+    'EOXMigrationDetails': EoxMigrationFactory.build,
     'EOXExternalAnnouncementDate': parse_date_record,
     'EndOfRoutineFailureAnalysisDate': parse_date_record,
     'EndOfSWMaintenanceReleases': parse_date_record,
@@ -57,10 +63,13 @@ class EoxFactory:
     @classmethod
     def build(cls, response):
         for record in response.EOXRecord:
+            EoxErrorFactory.build(response)
             eox = EoxRecord()
             for key, attribute in attribute_map.items():
                 value = record[key]
                 if key in attribute_type_map:
                     value = attribute_type_map[key](value)
+                else:
+                    value = deafult_clean(value)
                 setattr(eox, attribute, value)
             yield eox

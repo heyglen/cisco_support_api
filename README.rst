@@ -1,16 +1,6 @@
 ===============================
-cisco_api
+Cisco APIs
 ===============================
-
-Project
-
-Project
 
 .. code-block:: python
 ::
-
-
-Features
---------
-
-* TODO
