@@ -5,7 +5,7 @@ import pathlib
 import click
 import yaml
 
-from cisco_api.utilities.cli_debug import debug_option
+from cisco_api.cli.debug_decorator import debug_option
 from cisco_api.utilities.configuration import (configuration_directory,
                                                configuration_path,
                                                default_configuration)

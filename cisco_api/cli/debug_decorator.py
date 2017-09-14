@@ -60,6 +60,7 @@ def debug_option(fn):
     def debug_decorator(*args, **kwargs):
         debug_flag = kwargs.pop('debug')
         if debug_flag:
+            kwargs['loop'].set_debug(True)
             for log in (module_logger, ):
                 log.handlers = list()
                 debug_handler.setLevel(logging.DEBUG)
