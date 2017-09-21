@@ -1,5 +1,5 @@
 
-from cisco_api.utilities.exceptions import (InvalidProduct,
+from cisco_support_api.utilities.exceptions import (InvalidProduct,
                                             GeneralException,
                                             InvalidStartDate,
                                             SoftwareReleaseTooLong,

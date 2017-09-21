@@ -2,7 +2,7 @@
 
 import click
 
-from cisco_api.utilities.dot_dict import DotDict
+from cisco_support_api.utilities.dot_dict import DotDict
 
 
 messages = DotDict({

@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use cisco_api in a project::
+To use cisco_support_api in a project::
 
-    import cisco_api
+    import cisco_support_api

@@ -1,5 +1,5 @@
 
-from cisco_api.records.eox_migration import EoxMigration
+from cisco_support_api.records.eox_migration import EoxMigration
 
 attribute_map = {
     'MigrationInformation': 'information',

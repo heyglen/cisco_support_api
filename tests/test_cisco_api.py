@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_cisco_api
+test_cisco_support_api
 ----------------------------------
 
-Tests for `cisco_api` module.
+Tests for `cisco_support_api` module.
 """
 
 import pytest
@@ -13,8 +13,8 @@ import pytest
 from contextlib import contextmanager
 from click.testing import CliRunner
 
-from cisco_api import cisco_api
-from cisco_api import cli
+from cisco_support_api import cisco_support_api
+from cisco_support_api import cli
 
 
 @pytest.fixture
@@ -35,7 +35,7 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert 'cisco_api.cli.main' in result.output
+    assert 'cisco_support_api.cli.main' in result.output
     help_result = runner.invoke(cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output

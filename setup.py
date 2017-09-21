@@ -7,7 +7,6 @@ REQUIRED = [
     'requests',
     'appdirs',
     'pyyaml',
-    'pathlib',
     'Click>=6.0',
 ]
 
@@ -22,26 +21,26 @@ test_requirements = [
 ]
 
 setup(
-    name='cisco_api',
+    name='cisco_support_api',
     version='0.1.0',
     description="Project",
     long_description=readme + '\n\n' + history,
     author="Glen Harmon",
     author_email='glencharmon@gmail.com',
-    url='https://github.com/heyglen/cisco_api',
+    url='https://github.com/heyglen/cisco_support_api',
     packages=find_packages(exclude=['contrib', u'docs', u'tests']),
-    package_dir={'cisco_api':
-                 'cisco_api'},
+    package_dir={'cisco_support_api':
+                 'cisco_support_api'},
     entry_points={
         'console_scripts': [
-            'cisco_api=cisco_api.cli:commands'
+            'cisco_support_api=cisco_support_api.cli:commands'
         ]
     },
     include_package_data=True,
     install_requires=REQUIRED,
     license="MIT license",
     zip_safe=False,
-    keywords='cisco_api',
+    keywords='cisco_support_api',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

@@ -2,9 +2,9 @@
 import logging
 import datetime
 
-from cisco_api.records.eox import EoxRecord
-from cisco_api.factories.eox_error import EoxErrorFactory
-from cisco_api.factories.eox_migration import EoxMigrationFactory
+from cisco_support_api.records.eox import EoxRecord
+from cisco_support_api.factories.eox_error import EoxErrorFactory
+from cisco_support_api.factories.eox_migration import EoxMigrationFactory
 
 
 logger = logging.getLogger(__name__)

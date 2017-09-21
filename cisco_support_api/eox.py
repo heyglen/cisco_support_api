@@ -7,10 +7,10 @@ import datetime
 
 import requests
 
-from cisco_api.factories.eox import EoxFactory
-from cisco_api.base_api import BaseApi
-from cisco_api.utilities.configuration import configuration
-from cisco_api.utilities.dot_dict import DotDict
+from cisco_support_api.factories.eox import EoxFactory
+from cisco_support_api.base_api import BaseApi
+from cisco_support_api.utilities.configuration import configuration
+from cisco_support_api.utilities.dot_dict import DotDict
 
 logger = logging.getLogger(__name__)
 
@@ -149,7 +149,7 @@ class Eox(BaseApi):
                 break
 
     def by_serial(self, serial):
-        for serial_url in self._serial_urls(product_id):
+        for serial_url in self._serial_urls(serial):
             responses = self._get(
                 serial_url,
                 # params={

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from cisco_api.cisco_api import CiscoApi
+from cisco_support_api.cisco_support_api import CiscoSupportApi
 
 __author__ = """Glen Harmon"""
 __email__ = 'glencharmon@gmail.com'

@@ -5,8 +5,8 @@ import pathlib
 import click
 import yaml
 
-from cisco_api.utilities.cli_debug import debug_option
-from cisco_api.utilities.configuration import (configuration_directory,
+from cisco_support_api.utilities.cli_debug import debug_option
+from cisco_support_api.utilities.configuration import (configuration_directory,
                                                configuration_path,
                                                default_configuration)
 logger = logging.getLogger(__name__)

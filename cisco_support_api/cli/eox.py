@@ -5,8 +5,8 @@ import logging
 
 import click
 
-from cisco_api.cli.messages import messages
-from cisco_api.utilities.cli_debug import debug_option
+from cisco_support_api.cli.messages import messages
+from cisco_support_api.utilities.cli_debug import debug_option
 
 logger = logging.getLogger(__name__)
 

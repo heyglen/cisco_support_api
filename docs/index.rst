@@ -1,20 +1,12 @@
-Welcome to cisco_api's documentation!
-======================================
+Cisco Support APIs
+==================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   readme
    installation
    usage
    contributing
    authorshistory
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

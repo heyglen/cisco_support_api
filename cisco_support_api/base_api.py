@@ -6,7 +6,7 @@ import datetime
 
 import requests
 
-from cisco_api.utilities.dot_dict import DotDict
+from cisco_support_api.utilities.dot_dict import DotDict
 
 
 logger = logging.getLogger(__name__)
