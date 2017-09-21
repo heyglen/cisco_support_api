@@ -24,7 +24,7 @@ EOX_TYPES = DotDict({
 })
 
 
-class Eox(BaseApi):
+class AsyncEox(BaseApi):
     """
         https://developer.cisco.com/site/support-apis/docs/#eox/SWReleaseStringType
     """
