@@ -1,11 +1,7 @@
 # https://developer.cisco.com/site/support-apis/docs/#eox
 
-import copy
-import json
 import logging
 import datetime
-
-import requests
 
 from cisco_support_api.factories.eox import EoxFactory
 from cisco_support_api.base_api import BaseApi
@@ -163,11 +159,13 @@ class Eox(BaseApi):
             if not self._new_page(responses):
                 break
 
-
     async def list(self):
         now = datetime.datetime.now()
         last_week = now - datetime.timedelta(weeks=1)
 
         start_date = last_week.strftime('%Y-%m-%d')
         end_date = now.strftime('%Y-%m-%d')
-        yield from self.by_date(start_date, end_date)
+        records = list()
+        async for eox in self.by_date(start_date, end_date):
+            records.append(eox)
+        return records
