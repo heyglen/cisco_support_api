@@ -115,6 +115,7 @@ class Eox(BaseApi):
         return current_page != last_page
 
     async def by_date(self, start_date, end_date):
+        records = list()
         for unvalidated_date in [start_date, end_date]:
             datetime.datetime.strptime(unvalidated_date, '%Y-%m-%d')
         for date_url in self._date_urls(start_date, end_date):
@@ -125,11 +126,13 @@ class Eox(BaseApi):
                 # },
             )
             for eox in self._get_records(responses):
-                yield eox
+                records.append(eox)
             if not self._new_page(responses):
                 break
+        return records
 
     async def by_product(self, product_id):
+        records = list()
         for product_url in self._product_urls(product_id):
             responses = await self._get(
                 product_url,
@@ -139,14 +142,16 @@ class Eox(BaseApi):
             )
 
             for eox in self._get_records(responses):
-                yield eox
+                records.append(eox)
 
             if not self._new_page(responses):
                 break
+        return records
 
-    def by_serial(self, serial):
+    async def by_serial(self, serial):
+        records = list()
         for serial_url in self._serial_urls(serial):
-            responses = self._get(
+            responses = await self._get(
                 serial_url,
                 # params={
                 #     'eoxAttrib': EOX_TYPES.sale
@@ -154,10 +159,11 @@ class Eox(BaseApi):
             )
 
             for eox in self._get_records(responses):
-                yield eox
+                records.append(eox)
 
             if not self._new_page(responses):
                 break
+        return records
 
     async def list(self):
         now = datetime.datetime.now()

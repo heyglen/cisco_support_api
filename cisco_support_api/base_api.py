@@ -2,7 +2,6 @@
 import copy
 import json
 import logging
-import datetime
 
 import aiohttp
 
@@ -10,6 +9,7 @@ from cisco_support_api.utilities.dot_dict import DotDict
 
 
 logger = logging.getLogger(__name__)
+
 
 class BaseApi(object):
     _token_url = 'https://cloudsso.cisco.com/as/token.oauth2'
@@ -69,7 +69,9 @@ class BaseApi(object):
         params = params or dict()
         request_params.update(params)
         session = await self._get_session()
-        async with session.get(url, headers=headers, params=request_params) as response:
+        async with session.get(url,
+                               headers=headers,
+                               params=request_params) as response:
             response.raise_for_status()
             data = await response.json()
         pretty_data = json.dumps(data, indent=4, sort_keys=True)
