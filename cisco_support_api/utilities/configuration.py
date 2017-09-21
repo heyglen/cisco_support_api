@@ -26,10 +26,6 @@ default_configuration = {
         'username': None,
         'password': None,
     },
-    'psirt': {
-        'username': None,
-        'password': None,
-    },
 }
 
 
