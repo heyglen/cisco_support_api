@@ -36,27 +36,29 @@ Install
     $ cisco_support_api eox by_serial 1234567890 --verbose
     CISCO7201-RF
             announced = 2011-09-30
-            failure_analysis = 2013-09-29
-            service_contract_renewal = 2016-12-28
-            service_contract_attachment = 2016-12-28
+            failure_analysis = 2000-01-02
+            service_contract_renewal = 2000-01-02
+            service_contract_attachment = 2000-01-02
             last_day_of_support = 2017-09-30
             product_bulletin_url = http://www.cisco.com/en/US/prod/collateral/routers/ps341/end_of_life_c51-681414.html
             bulletin_number = RFEOL7682
             product_description = Cisco 7201 Chassis, 1GB, Dual P/S, 256MB Flash REFURBISHED
-            updated = 2013-08-01
+            updated = 2000-01-02
 
 4. Use as a library
+
+.. code-block:: shell
+
+    python3.6
+
 
 .. code-block:: python
 
     import asyncio
 
-    import cisco_support_api
+    from cisco_support_api import CiscoSupportApi
 
-    cisco = cisco_support_api.CiscoSupportApi()
-    loop = asyncio.get_event_loop()
-    records = loop.run_until_complete(cisco.eox.by_serial('JAE13083G83'))
-    loop.close()
+    support = CiscoSupportApi()
 
-    for record in records:
+    for record in support.eox.by_serial('1234567890'):
         print(f'{record.product} {record.last_day_of_support}')
