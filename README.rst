@@ -2,5 +2,4 @@
 Cisco APIs
 ===============================
 
-.. code-block:: python
-::
+You should `ReadTheDocs <http://cisco-support-api.readthedocs.io>`_
