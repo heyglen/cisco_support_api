@@ -118,11 +118,11 @@ class Eox(BaseApi):
         last_page = response.PaginationResponseRecord.LastIndex
         return current_page != last_page
 
-    def by_date(self, start_date, end_date):
+    async def by_date(self, start_date, end_date):
         for unvalidated_date in [start_date, end_date]:
             datetime.datetime.strptime(unvalidated_date, '%Y-%m-%d')
         for date_url in self._date_urls(start_date, end_date):
-            responses = self._get(
+            responses = await self._get(
                 date_url,
                 # params={
                 #     'eoxAttrib': EOX_TYPES.sale
@@ -133,9 +133,9 @@ class Eox(BaseApi):
             if not self._new_page(responses):
                 break
 
-    def by_product(self, product_id):
+    async def by_product(self, product_id):
         for product_url in self._product_urls(product_id):
-            responses = self._get(
+            responses = await self._get(
                 product_url,
                 # params={
                 #     'eoxAttrib': EOX_TYPES.sale
@@ -164,7 +164,7 @@ class Eox(BaseApi):
                 break
 
 
-    def list(self):
+    async def list(self):
         now = datetime.datetime.now()
         last_week = now - datetime.timedelta(weeks=1)
 

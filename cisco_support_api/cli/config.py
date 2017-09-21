@@ -1,14 +1,13 @@
 
 import logging
-import pathlib
 
 import click
 import yaml
 
 from cisco_support_api.utilities.cli_debug import debug_option
 from cisco_support_api.utilities.configuration import (configuration_directory,
-                                               configuration_path,
-                                               default_configuration)
+                                                       configuration_path,
+                                                       default_configuration)
 logger = logging.getLogger(__name__)
 
 config_cli = click.Group('config')

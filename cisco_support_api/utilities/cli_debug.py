@@ -8,7 +8,7 @@ import click
 import colorlog
 
 
-formatter = colorlog.ColoredFormatter(
+FORMATTER = colorlog.ColoredFormatter(
     "%(white)s%(message)s",
     datefmt=None,
     reset=True,
@@ -23,10 +23,10 @@ formatter = colorlog.ColoredFormatter(
     style='%'
 )
 
-log_text = "%(log_color)s%(levelname)-2s%(reset)s %(name)-3s %(white)s%(message)s"
+LOG_TEXT = "%(log_color)s%(levelname)-2s%(reset)s %(name)-3s %(white)s%(message)s"
 
-verbose_formatter = colorlog.ColoredFormatter(
-    log_text,
+VERBOSE_FORMATTER = colorlog.ColoredFormatter(
+    LOG_TEXT,
     datefmt=None,
     reset=True,
     log_colors={
@@ -44,11 +44,11 @@ verbose_formatter = colorlog.ColoredFormatter(
 def debug_option(fn):
     debug_handler = logging.StreamHandler(sys.stdout)
     debug_handler.setLevel(logging.WARNING)
-    debug_handler.setFormatter(verbose_formatter)
+    debug_handler.setFormatter(VERBOSE_FORMATTER)
 
     info_handler = logging.StreamHandler(sys.stdout)
     info_handler.setLevel(logging.INFO)
-    info_handler.setFormatter(formatter)
+    info_handler.setFormatter(FORMATTER)
 
     module_logger = logging.getLogger(__name__.split('.')[0])
     module_logger.handlers = list()

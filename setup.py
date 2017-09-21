@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 REQUIRED = [
     'colorlog',
-    'requests',
+    'aiohttp',
     'appdirs',
     'pyyaml',
     'Click>=6.0',
